@@ -14,34 +14,37 @@
             <div>
                 <h1>Log in</h1>
             </div>
-            <div>
-                <input type="text" placeholder="Enter name">
-                <p></p>
-            </div>
-            <div>
-                <input type="text" placeholder="Enter lastname">
-                <p></p>
-            </div>
-            <div>
-                <input type="email" placeholder="Enter email">
-                <p></p>
-            </div>
-            <div>
-                <input type="password" placeholder="Enter password">
-                <p></p>
-            </div>
-            <div>
-                <input type="password" placeholder="Enter password">
-                <p></p>
-            </div>
-            <div>
-                <input type="date" placeholder="date">
-                <p></p>
-            </div>
-            <div>
-                <button>send</button>
-            </div>
+            <form action="form">
+                <div>
+                    <input type="text" class="name" placeholder="Enter name">
+                    <p class="error"></p>
+                </div>
+                <div>
+                    <input type="text" class="name" placeholder="Enter lastname">
+                    <p class="error"></p>
+                </div>
+                <div>
+                    <input type="email" id="email" placeholder="Enter email">
+                    <p class="error"></p>
+                </div>
+                <div>
+                    <input type="password" id='password' placeholder="Enter password">
+                    <p class="error"></p>
+                </div>
+                <div>
+                    <input type="password" id='password2' placeholder="Confirm the password">
+                    <p class="error"></p>
+                </div>
+                <div>
+                    <input type="date" id="date" placeholder="date">
+                    <p class="error"></p>
+                </div>
+                <div>
+                    <button id="login">send</button>
+                </div>
+            </form>
         </div>
     </div>
+    <script src="app.js"></script>
 </body>
 </html>

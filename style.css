@@ -29,9 +29,24 @@ input{
     border-bottom: 1px solid black;
 }
 
+.error{
+    color: red;
+}
+
+.errorI{
+    background-color: rgba(165, 42, 42, 0.121);
+    border-bottom: 1px solid red;
+}
+
+.done{
+    background-color: rgba(56, 165, 42, 0.121);
+    border-bottom: 1px solid rgb(0, 255, 51);
+}
+
 p{
-    height: 1.2em;
-    font-size: 0.8em;
+    height: 2vh;
+    font-size: 0.5em;
+    font-weight: bold;
 }
 
 button{
