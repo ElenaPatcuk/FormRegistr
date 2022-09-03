@@ -2,31 +2,32 @@
     margin: 0;
     padding: 0;
     border: none;
-    font-family:  'Aboreto', cursive;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .container{
     display: flex;
     justify-content: center; /*Центрирование по горизонтали*/
     align-items: center;
-    height: 80vh;
-    margin: auto;
+    height: 100vh;
 }
 
 .login{
     background-color: rgba(150, 243, 79, 0.409);
-    padding: 1em 2em;
+    padding: 2em;
 }
 
 h1{
     text-align: center;
-    margin-bottom:1em;
+    margin-bottom:0.8em;
+    font-size: 3em;
 }
 
 input{
     background: none;
     outline: none;
     border-bottom: 1px solid black;
+    font-size: 1.5em;
 }
 
 .error{
@@ -44,15 +45,15 @@ input{
 }
 
 p{
-    height: 2vh;
-    font-size: 0.5em;
-    font-weight: bold;
+    height: 4vh;
+    font-size: 1.3em;
 }
 
 button{
-    margin-top: 2.5em;
+    margin-top: 3vh;
     width: 100%;
     height: 3em;
+    font-size: 1.5em;
 }
 
 button:hover{

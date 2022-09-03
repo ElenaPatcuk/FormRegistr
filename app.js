@@ -1,23 +1,24 @@
 let login = document.querySelector('#login')
-let name = document.querySelectorAll('.name')
+let form = document.querySelector('#myForm')
+let name = document.querySelector('#name')
+let lstname = document.querySelector('#lstname')
 let email = document.querySelector('#email')
 let password = document.querySelector('#password')
 let password2 = document.querySelector('#password2')
 let date = document.querySelector('#date')
-
 let errors = document.querySelectorAll('.error')
 
-flags = {
-    btn: true, 
-    confines: [false, false, false, false, false, false]
-}
+flags = [false, false, false, false, false, false]
 
 function txtCnt (txt, clRem, clAd, fl, index, p, i){
     p.textContent = txt
     i.classList.remove(clRem)
     i.classList.add(clAd)
-    flags['confines'][index]=fl
+    flags[index]=fl
 }
+
+// блокируем кнопку
+login.disabled = true
 
 // проверка на пустоту поля
 function zero(i, p, index){
@@ -28,35 +29,33 @@ function zero(i, p, index){
     }
 }
 
-// запрет ввода цифр для ИФ ограничения по кол-ву символов
-function noInput(){
-    const reg = /[^А-Яа-яЁё ]/g
-    if(this.value.match(reg)){
-        this.value = this.value.replace(reg,'')
+// запрет ввода цифр для ИФ и ограничения по кол-ву символов
+function noInput(n){
+    const reg = /[^А-Яа-яЁё\- *]/g
+    if(n.value.match(reg)){
+        n.value = n.value.replace(reg,'')
     }
-
-    if(this.value.length>50){
-        this.value = this.value.slice(0,50)
+    if(n.value.length>50){
+        n.value = n.value.slice(0,50)
     }
 }
-name.forEach(f => {
-    f.addEventListener('input', noInput)
-})
 
-name[0].addEventListener('change', ()=>{
-    zero(name[0], errors[0], 0)})
-name[1].addEventListener('change', ()=>{
-    zero(name[1], errors[1], 1)})
+name.addEventListener('input', ()=>{
+    noInput(name)
+    zero(name, errors[0], 0)})
+lstname.addEventListener('input', ()=>{
+    noInput(lstname)
+    zero(lstname, errors[1], 1)})
 
+// проверка EMAIL
 function validateEmail(email) {
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
 
-// проверка EMAIL
 email.addEventListener('change', ()=>{
     if(!validateEmail(email.value)){
-        txtCnt('Enter your email correctly!', 'done', 'errorI', 'false', 0, errors[0], email)
+        txtCnt('Enter your email correctly!', 'done', 'errorI', 'false', 2, errors[2], email)
     }
     else{
         txtCnt('', 'errorI', 'done', 'true', 2, errors[2], email)
@@ -93,7 +92,7 @@ password2.addEventListener('change', ()=>{
 
 // проверка даты
 function ageUser(date) {
-    return ((new Date().getTime() - new Date(date)) / (24 * 3600 * 365.25 * 1000)) | 0;
+    return ((new Date().getTime() - new Date(date)) / (24 * 3600 * 365.2 * 1000)) | 0;
 }
 
 date.addEventListener('change', ()=>{
@@ -106,11 +105,11 @@ date.addEventListener('change', ()=>{
     
 })
 
-login.addEventListener('click', ()=>{
-        if(flags['confines'].includes(false)){
-            login.disabled = true
-        }
-        if(flags['confines'].includes(true)){
-            login.disabled = false
-        }   
+// проверка по флагам для блокировки или разблокировки кнопки
+form.addEventListener('change',function(){
+    if(flags.includes(false)){
+        login.disabled = true
+    }else{
+        login.disabled = false
+    } 
 })
